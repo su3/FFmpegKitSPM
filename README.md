@@ -1,8 +1,25 @@
-# How to Build FFmpeg-kit for SPM
+# FFmpeg-kit for SPM
 
-1. Build based on the FFmpeg-kit project from https://github.com/arthenica/ffmpeg-kit, using the current version 6.0.
+This is a Swift Package Manager (SPM) wrapper for the FFmpeg-kit library, which provides a comprehensive FFmpeg development package for iOS, tvOS, and macOS platforms. It allows you to easily integrate FFmpeg into your Swift projects using SPM.
 
-2. Refer to the documentation at https://github.com/arthenica/ffmpeg-kit/tree/main/apple for guidance.
-In your temporary project, use the following line in your Podfile: `'ffmpeg-kit-ios-full', '~> 6.0'` After building, you will find 7 XCFramework files in the project directory.
+Build based on the FFmpeg-kit project from https://github.com/arthenica/ffmpeg-kit, using the current version 6.0.
 
-3. Import all XCFramework files into your Swift Package Manager (SPM) project.
+## Example
+
+```swift
+import ffmpegkit
+
+func convertAudio(input: URL, output: URL) async -> Bool {
+        let inPath = input.path(percentEncoded: false)
+        let outPath = output.path(percentEncoded: false)
+        let command = String(format: "ffmpeg -i '%@' -vn -qscale:a 0 '%@'", inPath, outPath)
+        
+        return await withCheckedContinuation { (continuation: CheckedContinuation<Bool, Never>) in
+            let _ = FFmpegKit.executeAsync(command) { session in
+                let returnCode = session?.getReturnCode()
+                let success = ReturnCode.isSuccess(returnCode)
+                continuation.resume(returning: success)
+            }
+        }
+    }
+```
