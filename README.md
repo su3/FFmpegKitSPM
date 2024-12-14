@@ -1,8 +1,8 @@
-# FFmpeg-kit for SPM
+# FFmpegKit for SPM
 
-This is a Swift Package Manager (SPM) wrapper for the FFmpeg-kit library, which provides a comprehensive FFmpeg development package for iOS, tvOS, and macOS platforms. It allows you to easily integrate FFmpeg into your Swift projects using SPM.
+This is a Swift Package Manager (SPM) wrapper for the FFmpegKit library, which provides a comprehensive FFmpeg development package for iOS, tvOS, and macOS platforms. It allows you to easily integrate FFmpeg into your Swift projects using SPM.
 
-Build based on the FFmpeg-kit project from https://github.com/arthenica/ffmpeg-kit, using the current version 6.0.
+Build based on the FFmpegKit project from https://github.com/arthenica/ffmpeg-kit, using the current version 6.0.
 
 ## Example
 
