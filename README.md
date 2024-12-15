@@ -12,7 +12,7 @@ import ffmpegkit
 func convertAudio(input: URL, output: URL) async -> Bool {
         let inPath = input.path(percentEncoded: false)
         let outPath = output.path(percentEncoded: false)
-        let command = String(format: "ffmpeg -i '%@' -vn -qscale:a 0 '%@'", inPath, outPath)
+        let command = String(format: "-i '%@' -vn -qscale:a 0 '%@'", inPath, outPath)
         
         return await withCheckedContinuation { (continuation: CheckedContinuation<Bool, Never>) in
             let _ = FFmpegKit.executeAsync(command) { session in
